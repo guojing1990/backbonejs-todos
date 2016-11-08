@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="css/todos.css" rel="stylesheet">
+</head>
+<body>
+<div id="todoapp">
+    <header>
+        <h1>Todos</h1>
+        <input id="new-todo" type="text" placeholder="请输入任务...">
+    </header>
+    <section id="main">
+        <input id="toggle-all" type="checkbox">
+        <label for="toggle-all">全选</label>
+        <ul id="todo-list"></ul>
+    </section>
+    <footer>
+        <a id="clear-completed">删除已完成的</a>
+        <div id="todo-count"></div>
+    </footer>
+</div>
+<!--templates-->
+<script type="text/template" id="item-template">
+    <div class="view">
+        <input type="checkbox" class="toggle" <%=done? "checked='checked'" :""%> />
+        <label><%-title%></label>
+        <a class="destroy"></a>
+    </div>
+    <input class="edit" type="text" value="<%-title%>" />
+</script>
+<script type="text/template" id="stats-template">
+    <%if(done){%>
+        <a id="clear-completed">Clear <%=done%> completed <%= done==1?'item':'items'%></a>
+    <%}%>
+        <div id="todo-count"><b><%=remaining%> <%=remaining==1?'item':'items'%> left</b></div>
+</script>
+<script src="js/json2.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/backbone.localStorage.js"></script>
+<script src="js/todos_new.js"></script>
+</body>
+</html>
